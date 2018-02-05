@@ -28,7 +28,7 @@ Further it will create an API Gateway proxy by the name `auth-api` with two endp
 
 ## Getting Started
 
-In order to get started you just have to open the sample project from the SLappForce IDE and deploy it on top of your AWS account. While deploying the project, IDE will get a clone of this and commit it to your own GitHub account to allow you to keep playing with the source code to get familiar with the application.
+In order to get started you just have to open the sample project from the SLAppForge IDE and deploy it on top of your AWS account. While deploying the project, IDE will get a clone of this and commit it to your own GitHub account to allow you to keep playing with the source code to get familiar with the application.
 
 ## Deployment
 
@@ -53,8 +53,8 @@ After the deployment, you can test this sample application by first sending HTTP
   "address": "12 A /5, Pirivena Rd, Mount Lavinia"
 }
 ```
-6. In the signup call an entry will be added to the users table. If you were successful you'll get a 200 OK response with the response message `Successfully added a new user with email`.
-7. Then, to check the signin, send an HTTP POST request to the signin endpoint (https://{api-id}.execute-api.{region}.amazonaws.com/prod/**signin**) you found in the earlier steps with a sample JSON payload as follows. Note that the values should match the values used in signup request.
+7. In the signup call an entry will be added to the users table. If you were successful you'll get a 200 OK response with the response message `Successfully added a new user with email`.
+8. Then, to check the signin, send an HTTP POST request to the signin endpoint (https://{api-id}.execute-api.{region}.amazonaws.com/prod/**signin**) you found in the earlier steps with a sample JSON payload as follows. Note that the values should match the values used in signup request.
 ```json
 {
   "email": "rajind@adroitlogic.com",
