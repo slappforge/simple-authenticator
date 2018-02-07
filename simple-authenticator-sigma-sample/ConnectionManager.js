@@ -7,6 +7,6 @@ module.exports=function(){
         port: process.env.Port_rdsAuthDatabase,
         user: process.env.User_rdsAuthDatabase,
         password: process.env.Password_rdsAuthDatabase,
-        database: process.env.Database_rdsAuthDatabase,
+        database: "authDatabase"
     };
-    };
+};
