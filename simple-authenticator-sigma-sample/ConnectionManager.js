@@ -4,9 +4,9 @@ module.exports=function(){
     
     this.dbConnections["authDatabase"] = {
         host: process.env.EndPoint_rdsAuthDatabase,
-        port: 3306,
-        user: "rdsuser",
-        password: "12345678",
-        database: "authDatabase",
+        port: process.env.Port_rdsAuthDatabase,
+        user: process.env.User_rdsAuthDatabase,
+        password: process.env.Password_rdsAuthDatabase,
+        database: "authDatabase"
     };
-    };
+};
