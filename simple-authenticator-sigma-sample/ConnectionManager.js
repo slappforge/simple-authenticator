@@ -1,7 +1,5 @@
-module.exports=function(){
-
+module.exports = function () {
     this.dbConnections = [];
-    
     this.dbConnections["authDatabase"] = {
         host: process.env.EndPoint_rdsAuthDatabase,
         port: process.env.Port_rdsAuthDatabase,
