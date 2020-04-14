@@ -3,26 +3,32 @@ let connectionManager = require('./ConnectionManager');
 let SL_AWS = require('slappforge-sdk-aws');
 const rds = new SL_AWS.RDS(connectionManager);
 
-exports.handler = function (event, context, callback) {
- let response;
-	let inserts = [event.email, event.password, event.lastName, event.firstName, event.address]; 
+exports.handler = async (event) => {
+	let inserts = [event.email, event.password, event.lastName, event.firstName, event.address];
 
 	// You can pass the existing connection to this function.
 	// A new connection will be created if it's not present as the third param 
 	// You must always end the DB connection after it's used
-	rds.query({
-		instanceIdentifier: 'authDatabase',
-		query: 'INSERT INTO users (Email, Password, LastName, FirstName, Address) VALUES (?, ?, ?, ?, ?);',
-		inserts: inserts
-	}, function (error, results, connection) {
-		if (error) {
-			response = error;
-			throw error;
-		} else {
-			response = "Successfully added a new user with email";
-			console.log(results);
-		}
-		connection.end();
-		callback(null, response);
-	});
-}
+	try {
+		let results = await new Promise((resolve, reject) => {
+			rds.query({
+				instanceIdentifier: 'authDatabase',
+				query: 'INSERT INTO users (Email, Password, LastName, FirstName, Address) VALUES (?, ?, ?, ?, ?);',
+				inserts: inserts
+			}, (error, results, connection) => {
+				connection.end();
+				if (error) {
+					reject(error);
+				} else {
+					resolve(results);
+				}
+			});
+		});
+		console.log(results);
+		return "Successfully added a new user with email";
+
+	} catch (err) {
+		console.log(err);
+		throw err;
+	}
+};
